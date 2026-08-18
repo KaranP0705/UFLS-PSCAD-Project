@@ -1,0 +1,12 @@
+# PSCAD temporary build, simulation outputs, and log files
+*.gf46
+*.gf42
+*.out
+*.log
+*.bak*
+*.inf
+*.map
+*.f
+*.o
+*.exe
+*_build/

@@ -19,6 +19,7 @@ The project evaluates transient frequency stability, rotor dynamics, and selecti
 | **Disturbance Load (`BRK_DIST`)** | $58.8\text{ MW}$ | Switched load step injected at $t = 2.0\text{ s}$ |
 | **Voltage Regulator** | IEEE AC1C Model | Closed-loop field excitation maintaining $1.0\text{ pu}$ terminal voltage |
 
+![System Circuit Schematic](assets/Schematic.png)
 ---
 
 ## 2. Protection Scheme & Control Logic
@@ -40,6 +41,7 @@ Bus frequency ($f_{\text{bus}}$) is monitored continuously using an $f, V_{\text
 * **Stage 2 (`BRK_2`):** **`49.2 Hz`** — Secondary defense step for continuing frequency decay.
 * **Stage 3 (`BRK_3`):** **`49.0 Hz`** — Emergency backup step to prevent islanding or generator loss-of-mains.
 
+![Comparator and SR Flip-Flop Control Logic](assets/logic_control.png)
 ---
 
 ## 3. Dynamic Simulation Results
@@ -62,6 +64,10 @@ Bus frequency ($f_{\text{bus}}$) is monitored continuously using an $f, V_{\text
 * **$t \approx 2.1\text{ s}$ (Stage 1 Action):** Frequency reaches the dynamic nadir of **$49.60\text{ Hz}$**, crossing the $49.6\text{ Hz}$ threshold. Comparator output switches high (`1`), latching the SR flip-flop and opening `BRK_1`.
 * **$t > 4.0\text{ s}$ (Post-Shedding Equilibrium):** Dropping $29.4\text{ MW}$ restores power balance. Frequency rebounds rapidly and stabilizes at **$49.90\text{ Hz}$**.
 * **Selectivity Verification:** Frequency remains well above $49.2\text{ Hz}$ and $49.0\text{ Hz}$ post-trip. `BRK_2` and `BRK_3` remain low (`0`), verifying correct staged coordination without over-tripping.
+
+![Bus Frequency Response Graph](assets/frequency_response.png)
+
+![Breaker Trip Signal Plots](assets/breaker_status.png)
 
 ---
 

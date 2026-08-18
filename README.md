@@ -1,5 +1,3 @@
-# Under Frequency Load Shedding-PSCAD-Project
-UFLS Simulation using PSCAD
 # Multi-Stage Under-Frequency Load Shedding (UFLS) & AVR System Simulation
 
 A PSCAD-based dynamic power system simulation modeling a 3-stage Automatic Under-Frequency Load Shedding (AUFLS) protection scheme integrated with closed-loop Automatic Voltage Regulation (AVR).
@@ -19,8 +17,10 @@ The project evaluates transient frequency stability, rotor dynamics, and selecti
 | **Disturbance Load (`BRK_DIST`)** | $58.8\text{ MW}$ | Switched load step injected at $t = 2.0\text{ s}$ |
 | **Voltage Regulator** | IEEE AC1C Model | Closed-loop field excitation maintaining $1.0\text{ pu}$ terminal voltage |
 
-![System Circuit Schematic](assets/Schematic.png)
----
+<figure>
+  <img src="assets/Schematic.png" alt="PSCAD Model">
+  <figcaption><em>Figure 1: Complete system architecture in PSCAD.</em></figcaption>
+</figure>
 
 ## 2. Protection Scheme & Control Logic
 
@@ -41,8 +41,10 @@ Bus frequency ($f_{\text{bus}}$) is monitored continuously using an $f, V_{\text
 * **Stage 2 (`BRK_2`):** **`49.2 Hz`** — Secondary defense step for continuing frequency decay.
 * **Stage 3 (`BRK_3`):** **`49.0 Hz`** — Emergency backup step to prevent islanding or generator loss-of-mains.
 
-![Comparator and SR Flip-Flop Control Logic](assets/logic_control.png)
----
+<figure>
+  <img src="assets/logic_control.png" alt="Comparator and SR Flip-Flop Control Logic">
+  <figcaption><em>Figure 2: Comparator and SR Flip-Flop Control Logic.</em></figcaption>
+</figure>
 
 ## 3. Dynamic Simulation Results
 
@@ -65,11 +67,17 @@ Bus frequency ($f_{\text{bus}}$) is monitored continuously using an $f, V_{\text
 * **$t > 4.0\text{ s}$ (Post-Shedding Equilibrium):** Dropping $29.4\text{ MW}$ restores power balance. Frequency rebounds rapidly and stabilizes at **$49.90\text{ Hz}$**.
 * **Selectivity Verification:** Frequency remains well above $49.2\text{ Hz}$ and $49.0\text{ Hz}$ post-trip. `BRK_2` and `BRK_3` remain low (`0`), verifying correct staged coordination without over-tripping.
 
-![Bus Frequency Response Graph](assets/frequency_response.png)
+<figure>
+  <img src="assets/frequency_response.png" alt="Bus Frequency Response">
+  <figcaption><em>Figure 3: Bus Frequency Response Graph.</em></figcaption>
+</figure>
 
-![Breaker Trip Signal Plots](assets/breaker_status.png)
+<p>&nbsp;</p>
 
----
+<figure>
+  <img src="assets/breaker_status.png" alt="Breaker Trip Signal">
+  <figcaption><em>Figure 4: Breaker Trip Signal Plots.</em></figcaption>
+</figure>
 
 ## 4. How to Run in PSCAD
 
